@@ -28,6 +28,8 @@
                         <UButton type="submit" color="gray" size="lg" variant="ghost" :padded="false"
                             class="hover:!bg-transparent"
                             icon="hugeicons:comment-add-02"
+                            loading-icon="hugeicons:loading-02"
+                            :loading="loading"
                             :disabled="isCommentEmpty || isCommentExceedLimit || loading" />
                     </div>
                 </div>
