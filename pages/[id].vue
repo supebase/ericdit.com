@@ -46,6 +46,10 @@
                     </div>
 
                     <MarkdownRenderer :markdown="post?.content" />
+
+                    <div class="flex justify-center pt-4">
+                        <Like :post_id="post?.id" :user_id="authStore.user?.id" :target_type="`post`" />
+                    </div>
                 </div>
             </div>
 
