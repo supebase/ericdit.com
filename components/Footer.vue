@@ -9,12 +9,26 @@
             <div class="space-x-2">
                 <span>项目构建于 {{ useFormatDate(buildTime) }}</span>
                 <span>&bull;</span>
-                <span>v{{ version }}</span>
+                <span class="tracking-wide">{{ version }}</span>
             </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-const { public: { buildTime, version } } = useRuntimeConfig();
+const { public: { buildTime } } = useRuntimeConfig();
+
+const version = ref('0.0.0')
+
+onMounted(async () => {
+    try {
+        const { version: v } = await $fetch<{ version: string }>(
+            '/version.json',
+            { headers: { 'Cache-Control': 'no-cache' } }
+        )
+        version.value = v
+    } catch {
+        version.value = 'Unknown'
+    }
+})
 </script>
