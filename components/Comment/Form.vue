@@ -1,9 +1,12 @@
 <template>
     <div>
         <form @submit.prevent="handlePostComment">
-            <div class="ring-2 ring-gray-800 bg-gray-950 rounded-lg p-3">
-                <div v-if="isReplying" class="text-sm text-gray-200 font-semibold mb-2">
-                    您正在给 {{ replyingToUser }} 发送回复
+            <div class="ring-2 ring-gray-800 bg-gray-950 rounded-lg p-3 relative">
+                <div class="text-sm text-orange-200 font-semibold mb-2 absolute top-[-20px] left-1 -z-10">
+                    <div class="ring-2 ring-gray-800 inline-block px-2 py-1 rounded-t-lg transform transition-all duration-500 ease-in-out select-none"
+                    :class="isReplying ? '-translate-y-2 opacity-100' : 'translate-y-5 opacity-0'">
+                        {{ isReplying ? `回复：${replyingToUser}` : '取消回复' }}
+                    </div>
                 </div>
                 <UTextarea ref="commentInput" color="white" variant="none" :placeholder="randomPlaceholder" autoresize
                     :rows="2" :padded="false" v-model="comment" class="text-gray-300"
