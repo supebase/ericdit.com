@@ -3,7 +3,7 @@
         :class="{ 'cursor-pointer': canLike && !loading, 'opacity-50': !canLike || loading }" @click="handleClickLike">
         <div class="relative w-8 h-8" :class="{ 'animate-like': isAnimating }" @animationend="isAnimating = false">
             <UIcon
-                :name="hasLiked ? 'pepicons-pop:hands-clapping-checkmark-circle-filled' : 'pepicons-pop:hands-clapping-circle-filled'"
+                :name="hasLiked ? 'hugeicons:heart-check' : 'hugeicons:favourite'"
                 class="w-8 h-8 transition-all duration-300 "
                 :class="{ 'text-gray-300': hasLiked, 'text-gray-200': !hasLiked }" />
         </div>
